@@ -1,0 +1,211 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.instructions {
+    background-color: #e3f2fd;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #0d47a1;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.controls {
+    margin-bottom: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 10px;
+}
+
+input, button {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+button.clear-btn {
+    background-color: #dc3545;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    justify-content: center;
+}
+
+/* 대기석 */
+.player-pool {
+    width: 220px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    min-height: 500px;
+}
+
+.player-pool h3 {
+    margin-top: 0;
+    text-align: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.ball-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.pool-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    background: #f8f9fa;
+    padding: 5px;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+/* 미카사 배구공 스타일 */
+.ball-token {
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle at 30% 30%, #fffb00 20%, #0d47a1 60%, #0a2f6c 100%);
+    border: 2px solid #051b3d;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 11px;
+    cursor: grab;
+    user-select: none;
+    box-shadow: inset -3px -3px 7px rgba(0,0,0,0.6), 0 5px 10px rgba(0,0,0,0.4);
+    z-index: 6;
+    transition: transform 0.2s ease;
+}
+
+.ball-token:hover {
+    transform: scale(1.05) rotate(15deg);
+}
+
+.ball-token:active {
+    cursor: grabbing;
+    transform: scale(1.1) rotate(30deg);
+}
+
+/* 선수 토큰 스타일 */
+.player-token {
+    width: 45px;
+    height: 45px;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: grab;
+    user-select: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    text-align: center;
+    padding: 2px;
+    box-sizing: border-box;
+    word-break: break-all;
+    z-index: 5;
+}
+
+.player-token:active {
+    cursor: grabbing;
+}
+
+.court-drop-zone .player-token {
+    position: absolute !important;
+}
+
+/* 코트 영역 스타일 */
+.court-container {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.court {
+    width: 100%;
+    height: 100%;
+    background-color: #f2a154;
+    border: 5px solid #fff;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.net {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 8px;
+    background: repeating-linear-gradient(90deg, #333, #333 5px, #fff 5px, #fff 10px);
+    z-index: 10;
+}
+
+.court-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+.line-top-1 { top: 16.66%; }
+.line-top-2 { top: 33.33%; }
+.line-bot-1 { top: 66.66%; }
+.line-bot-2 { top: 83.33%; }
+
+#pathCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.court-drop-zone {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
