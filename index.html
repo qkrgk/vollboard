@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9인제 배구 작전판 (분리형 완성본)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>🏐 9인제 배구 작전판 (최종 분리형)</h1>
+    
+    <div class="instructions">
+        💡 <b>공 이동 경로</b>: <b>Shift 키를 누른 상태</b>로 미카사 공을 드래그하면 <span style="color: #0d47a1; font-weight: bold;">노랑/파랑 점선</span>이 그려집니다.<br>
+        🏃‍♂️ <b>선수 이동 경로</b>: <b>Shift 키를 누른 상태</b>로 선수를 드래그하면 <span style="font-weight: bold;">선수 고유 색상의 실선</span>이 그려집니다.<br>
+        ↩️ <b>실행 취소</b>: 잘못 움직였다면 키보드의 <b>Ctrl + Z</b>를 누르세요!
+    </div>
+
+    <div class="controls">
+        <input type="text" id="playerName" placeholder="선수 이름 입력" maxlength="5">
+        <button onclick="addPlayer()">선수 등록</button>
+        <button class="clear-btn" onclick="clearCanvas()">선명화 (경로 지우기)</button>
+    </div>
+
+    <div class="container">
+        <div class="player-pool" id="playerPool" ondragover="allowDrop(event)" ondrop="dropToPool(event)">
+            <h3>대기 명단</h3>
+            <div class="ball-container">
+                <div class="ball-token" id="v_ball" draggable="true">공</div>
+            </div>
+            <hr>
+            <div id="playerListContainer"></div>
+        </div>
+
+        <div class="court-container">
+            <div class="court">
+                <div class="net"></div>
+                <div class="court-line line-top-1"></div>
+                <div class="court-line line-top-2"></div>
+                <div class="court-line line-bot-1"></div>
+                <div class="court-line line-bot-2"></div>
+            </div>
+            
+            <canvas id="pathCanvas" width="600" height="600"></canvas>
+            <div class="court-drop-zone" id="courtZone" ondragover="allowDrop(event)" ondrop="dropToCourt(event)"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
